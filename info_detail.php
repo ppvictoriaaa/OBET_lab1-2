@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,6 +149,7 @@
                 }
             }
 
+            //showing the table
             echo "<h2>Info Details for $name with Detail ID $detail_id</h2>";
             echo "<form method='POST' action=''>";
             echo "<table>";
@@ -163,7 +165,7 @@
                 echo " &#8593; &#8595;";
             }
 
-            echo "</th><th>Detail ID</th></tr>";
+            echo "</th><th>Date</th><th>Detail ID</th></tr>";
 
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -172,6 +174,7 @@
                     echo "<td>" . htmlspecialchars($row['id']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['process_type']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['process_time_min']) . "</td>";
+                    echo "<td>" . date('Y-m-d', strtotime($row['date_added'])) . "</td>";
                     echo "<td>" . htmlspecialchars($row['detail_id']) . "</td>";
                     echo "</tr>";
                 }
@@ -198,4 +201,5 @@
 
     </div>
 </body>
+
 </html>

@@ -117,7 +117,7 @@
         if ($result) {
             echo "<form method='POST' action=''>";
             echo "<table>";
-            echo "<tr><th>Select</th><th>ID</th><th>Name</th><th>Material</th></tr>";
+            echo "<tr><th>Select</th><th>ID</th><th>Name</th><th>Material</th><th>Date</th></tr>";
 
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 echo "<tr>";
@@ -125,6 +125,7 @@
                 echo "<td>" . htmlspecialchars($row['detail_id']) . "</td>";
                 echo "<td><a href='info_detail.php?detail_id=" . $row['detail_id'] . "&name=" . urlencode($row['name']) . "'>" . htmlspecialchars($row['name']) . "</a></td>";
                 echo "<td>" . htmlspecialchars($row['material']) . "</td>";
+                echo "<td>" . date('Y-m-d', strtotime($row['date_added'])) . "</td>";
                 echo "</tr>";
             }
 
@@ -132,6 +133,8 @@
             echo "<div class='button-container'>";
             echo "<button type='submit' name='delete' class='delete-button'>Delete</button>";
             echo "<a href='add_detail.php' class='add-button'>Add</a>";
+            echo "<a href='lab3/statistic.php' class='add-button'>Statistic</a>";
+
             echo "</div>";
             echo "</form>";
         } else {
